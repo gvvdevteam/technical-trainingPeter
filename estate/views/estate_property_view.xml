@@ -69,9 +69,9 @@
                 <field name="facades" string="Facades"/>
                 <separator/>
                 <filter string="Available" name="available_properties" domain="[('active','=', True)]"/>
-                <filter string="Previous sold" name="available_properties" domain="[('active','=', False)]"/>
+                <filter string="Previous sold" name="unavailable_properties" domain="[('active','=', False)]"/>
                 <filter string="New properties" name="new_properties" domain="[('state','=', 'new')]"/>
-                <filter string="Offer received" name="new_properties" domain="[('state','=', 'offerreceived')]"/>
+                <filter string="Offer received" name="offer_received" domain="[('state','=', 'offerreceived')]"/>
                 <group expand="1" string="Group By">
                     <filter string="Postcode" name="postcode" context="{'group_by':'postcode', 'residual_visible':True}"/>
                 </group>
