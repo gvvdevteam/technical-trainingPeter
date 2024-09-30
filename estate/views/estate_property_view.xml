@@ -68,7 +68,7 @@
                 <field name="living_area" string="Living are (sqm)"/>
                 <field name="facades" string="Facades"/>
                 <separator/>
-                <filter string="Available" name="available_properties" domain="[('active','=', True)]"/>
+                <filter string="Current properties" name="available_properties" domain="[('active','=', True)]"/>
                 <filter string="Previous sold" name="unavailable_properties" domain="[('active','=', False)]"/>
                 <filter string="New properties" name="new_properties" domain="[('state','=', 'new')]"/>
                 <filter string="Offer received" name="offer_received" domain="[('state','=', 'offerreceived')]"/>
