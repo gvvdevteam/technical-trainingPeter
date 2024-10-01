@@ -7,7 +7,8 @@
         'data/ir.model.access.csv',
         'actions/estate_property_action.xml',
         'menu/estate_property_menu.xml',
-        'views/estate_property_view.xml'
+        'views/estate_property_view.xml',
+        'views/inherited_users_view.xml'
     ],
     "installable": True,
     'license': 'LGPL-3',

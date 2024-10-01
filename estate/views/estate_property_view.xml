@@ -21,8 +21,13 @@
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <form string="Property">
+                <header>
+                    <button name="action_estate_property_sold" string="Sold" type="object"/>
+                    <button name="action_estate_property_cancelled" string="Cancel" type="object"/>
+                </header>
                 <sheet>
                     <h1><field name="name"/></h1>
+                    <field name="tag_ids" widget="many2many_tags"/>
                     <group>
                         <group>
                             <field name="postcode"/>
@@ -31,6 +36,7 @@
                         <group>
                             <field name="expected_price"/>
                             <field name="selling_price"/>
+                            <field name="best_price"/>
                         </group>
                         <group>
                             <field name="active"/>
@@ -41,6 +47,7 @@
                         <page string="Description">
                             <group>
                                 <field name="description"/>
+                                <field name="type_id"/>
                                 <field name="bedrooms"/>
                                 <field name="living_area"/>
                                 <field name="facades"/>
@@ -48,6 +55,18 @@
                                 <field name="garden"/>
                                 <field name="garden_area"/>
                                 <field name="garden_orientation"/>
+                                <field name="total_area"/>
+                            </group>
+                        </page>
+                        <page string="Other info">
+                            <group>
+                            <field name="buyer_id"/>
+                            <field name="salesperson_id"/>
+                            </group>
+                        </page>
+                         <page string="Offers">
+                            <group>
+                                <field name="offer_ids"/>
                             </group>
                         </page>
                     </notebook>
@@ -76,6 +95,40 @@
                     <filter string="Postcode" name="postcode" context="{'group_by':'postcode', 'residual_visible':True}"/>
                 </group>
             </search>
+        </field>
+    </record>
+
+    <record id="estate_property_type_view_form" model="ir.ui.view">
+        <field name="name">estate.property.type.form</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <form string="Types">
+                <field name="name"/>
+            </form>
+        </field>
+    </record>
+
+    <record id="estate_property_tag_view_form" model="ir.ui.view">
+        <field name="name">estate.property.tag.form</field>
+        <field name="model">estate.property.tag</field>
+        <field name="arch" type="xml">
+            <form string="Types">
+                <field name="name"/>
+            </form>
+        </field>
+    </record>
+
+    <record id="estate_property_offer_list" model="ir.ui.view">
+        <field name="name">estate.property.offer.list</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <list string="Offers">
+                <field name="price" string="Price"/>
+                <field name="partner_id" string="Partner"/>    
+                <field name="status" string="Status"/>
+                <button name="action_estate_property_offer_accept" string="Accept" type="object" icon="fa-check"/>
+                <button name="action_estate_property_offer_refuse" string="Refuse" type="object" icon="fa-times"/>
+            </list>
         </field>
     </record>
 </odoo>
